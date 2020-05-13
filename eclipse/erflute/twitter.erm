@@ -107,15 +107,79 @@
 	</tablespace_set>
 	<diagram_walkers>
 		<table>
-			<physical_name>user</physical_name>
-			<logical_name>ユーザーテーブル</logical_name>
-			<description>Twitterのユーザーの情報を保存しているテーブル</description>
+			<physical_name>TWEETS</physical_name>
+			<logical_name>ツイッタ</logical_name>
+			<description>ツイッタを保存している場所</description>
 			<height>75</height>
 			<width>120</width>
 			<font_name>.AppleSystemUIFont</font_name>
 			<font_size>9</font_size>
-			<x>228</x>
-			<y>421</y>
+			<x>609</x>
+			<y>273</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relationship>
+					<name>FK_TWEETS_USERS</name>
+					<source>table.USERS</source>
+					<target>table.TWEETS</target>
+					<fk_columns>
+						<fk_column>
+							<fk_column_name>USERS_ID</fk_column_name>
+						</fk_column>
+					</fk_columns>
+					<parent_cardinality>1</parent_cardinality>
+					<child_cardinality>1..n</child_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+				</relationship>
+			</connections>
+			<columns>
+				<normal_column>
+					<physical_name>ID</physical_name>
+					<logical_name>ID</logical_name>
+					<type>bigint</type>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<auto_increment>true</auto_increment>
+				</normal_column>
+				<normal_column>
+					<physical_name>CONTENT</physical_name>
+					<logical_name>コンテンツ</logical_name>
+					<type>varchar(n)</type>
+					<length>280</length>
+					<not_null>true</not_null>
+				</normal_column>
+				<normal_column>
+					<physical_name>USERS_ID</physical_name>
+					<logical_name>ユーザーID</logical_name>
+					<referred_column>table.USERS.ID</referred_column>
+					<relationship>FK_TWEETS_USERS</relationship>
+					<not_null>true</not_null>
+				</normal_column>
+				<column_group>AUDIT</column_group>
+			</columns>
+			<indexes>
+			</indexes>
+			<compound_unique_key_list>
+			</compound_unique_key_list>
+			<table_properties>
+			</table_properties>
+		</table>
+		<table>
+			<physical_name>USERS</physical_name>
+			<logical_name>ユーザー</logical_name>
+			<description>Twitterのユーザーの情報を保存しているテーブル</description>
+			<height>204</height>
+			<width>173</width>
+			<font_name>.AppleSystemUIFont</font_name>
+			<font_size>9</font_size>
+			<x>318</x>
+			<y>230</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -125,39 +189,37 @@
 			</connections>
 			<columns>
 				<normal_column>
-					<physical_name>id</physical_name>
-					<logical_name>id</logical_name>
+					<physical_name>ID</physical_name>
+					<logical_name>ID</logical_name>
 					<type>bigint</type>
 					<not_null>true</not_null>
 					<primary_key>true</primary_key>
 					<auto_increment>true</auto_increment>
 				</normal_column>
 				<normal_column>
-					<physical_name>name</physical_name>
-					<logical_name>名前</logical_name>
+					<physical_name>NAME</physical_name>
+					<logical_name>ユーザーの名前</logical_name>
 					<type>varchar(n)</type>
 					<length>20</length>
 					<not_null>true</not_null>
-					<unique_key>true</unique_key>
 				</normal_column>
 				<normal_column>
-					<physical_name>email</physical_name>
-					<logical_name>メール</logical_name>
-					<type>varchar(n)</type>
-					<length>255</length>
-					<not_null>true</not_null>
-					<unique_key>true</unique_key>
-				</normal_column>
-				<normal_column>
-					<physical_name>password</physical_name>
-					<logical_name>パスワード</logical_name>
+					<physical_name>EMAIL</physical_name>
+					<logical_name>ユーザーのメール</logical_name>
 					<type>varchar(n)</type>
 					<length>255</length>
 					<not_null>true</not_null>
 				</normal_column>
 				<normal_column>
-					<physical_name>display_name</physical_name>
-					<logical_name>名前</logical_name>
+					<physical_name>PASSWORD</physical_name>
+					<logical_name>ユーザーのパスワード</logical_name>
+					<type>varchar(n)</type>
+					<length>255</length>
+					<not_null>true</not_null>
+				</normal_column>
+				<normal_column>
+					<physical_name>DISPLAY_NAME</physical_name>
+					<logical_name>表示している名前</logical_name>
 					<type>varchar(n)</type>
 					<length>20</length>
 					<not_null>true</not_null>
@@ -165,6 +227,24 @@
 				<column_group>AUDIT</column_group>
 			</columns>
 			<indexes>
+				<index>
+					<name>UQ_users_name</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.USERS.NAME</column_id>
+						</column>
+					</columns>
+				</index>
+				<index>
+					<name>UQ_users_email</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.USERS.EMAIL</column_id>
+						</column>
+					</columns>
+				</index>
 			</indexes>
 			<compound_unique_key_list>
 			</compound_unique_key_list>

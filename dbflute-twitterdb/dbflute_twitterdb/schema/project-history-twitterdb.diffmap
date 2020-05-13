@@ -1,4 +1,18 @@
 map:{
+    ; 2020/05/13 08:52:58 = map:{
+        ; diffDate = 2020/05/13 08:52:58
+        ; tableCount = map:{
+            ; next = 2
+            ; previous = 1
+        }
+        ; diffAuthor = root
+        ; tableDiff = map:{
+            ; TWEETS = map:{
+                ; tableName = TWEETS
+                ; diffType = ADD
+            }
+        }
+    }
     ; 2020/05/13 08:40:01 = map:{
         ; diffDate = 2020/05/13 08:40:01
         ; diffAuthor = root
