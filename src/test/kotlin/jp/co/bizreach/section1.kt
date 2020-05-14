@@ -84,8 +84,9 @@ class Section1 {
         // Act:
         // language=SQL
         val results = """
-select * 
-from MEMBER
+            select * 
+            from MEMBER
+            WHERE BIRTHDATE IS NULL
         """.fetch()
 
         // Assert:
