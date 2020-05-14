@@ -58,8 +58,11 @@ class Section2 {
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
-from MEMBER
+            select MEMBER.*, MEMBER_STATUS.*, MEMBER_SECURITY.*
+            from MEMBER
+            inner join MEMBER_STATUS on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+            inner join MEMBER_SECURITY on MEMBER.MEMBER_ID = MEMBER_SECURITY.MEMBER_ID
+            order by BIRTHDATE is null, BIRTHDATE desc, MEMBER.MEMBER_ID
         """.fetch()
 
         // Assert:
