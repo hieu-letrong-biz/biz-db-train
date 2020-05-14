@@ -25,8 +25,9 @@ class Section1 {
         // Act:
         // language=SQL
         val results = """
-select *
-from MEMBER
+            select *
+            from MEMBER
+            where MEMBER_NAME like 'S%'
         """.fetch()
 
         // Assert:
