@@ -125,8 +125,10 @@ class Section2 {
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
-from MEMBER
+            select MEMBER.*
+            from MEMBER
+            inner join MEMBER_STATUS on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+            order by MEMBER_STATUS.DISPLAY_ORDER, MEMBER.MEMBER_ID desc 
         """.fetch()
 
         // Assert:
