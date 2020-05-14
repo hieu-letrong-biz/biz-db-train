@@ -58,6 +58,7 @@ class Section1 {
             select * 
             from MEMBER
             WHERE MEMBER_ID = 1
+            ORDER BY MEMBER_NAME
         """.fetch()
 
         // Assert:
@@ -87,6 +88,7 @@ class Section1 {
             select * 
             from MEMBER
             WHERE BIRTHDATE IS NULL
+            ORDER BY UPDATE_DATETIME DESC
         """.fetch()
 
         // Assert:
