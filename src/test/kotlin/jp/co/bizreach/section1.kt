@@ -55,8 +55,9 @@ class Section1 {
         // Act:
         // language=SQL
         val results = """
-select * 
-from MEMBER
+            select * 
+            from MEMBER
+            WHERE MEMBER_ID = 1
         """.fetch()
 
         // Assert:
