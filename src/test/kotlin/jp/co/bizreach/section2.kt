@@ -158,8 +158,13 @@ class Section2 {
         // Act:
         // language=SQL
         val results = """
-select PURCHASE.*
-from PURCHASE
+            select PURCHASE.*, MEMBER.*, MEMBER_STATUS.*, PRODUCT.*
+            from PURCHASE
+              inner join MEMBER on PURCHASE.MEMBER_ID = MEMBER.MEMBER_ID
+              inner join MEMBER_STATUS on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+              inner join PRODUCT on PURCHASE.PRODUCT_ID = PRODUCT.PRODUCT_ID
+            where MEMBER.BIRTHDATE is not null
+            order by PURCHASE.PURCHASE_DATETIME desc, PURCHASE.PURCHASE_DATETIME desc, PRODUCT.PRODUCT_ID, MEMBER.MEMBER_ID
         """.fetch()
 
         // Assert:
