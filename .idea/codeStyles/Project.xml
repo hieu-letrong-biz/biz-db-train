@@ -128,6 +128,9 @@
       <option name="EXPR_CASE_END" value="1" />
       <option name="EXPR_CASE_KEEP_NL_AFTER_THEN" value="true" />
     </SQLiteCodeStyleSettings>
+    <ScalaCodeStyleSettings>
+      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
+    </ScalaCodeStyleSettings>
     <SqlCodeStyleSettings version="2">
       <option name="KEYWORD_CASE" value="0" />
       <option name="TYPE_CASE" value="3" />

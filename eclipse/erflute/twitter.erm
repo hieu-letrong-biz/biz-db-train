@@ -107,6 +107,97 @@
 	</tablespace_set>
 	<diagram_walkers>
 		<table>
+			<physical_name>FOLLOWS</physical_name>
+			<logical_name>フォロワー・フォロウィン</logical_name>
+			<description></description>
+			<height>75</height>
+			<width>120</width>
+			<font_name>.AppleSystemUIFont</font_name>
+			<font_size>9</font_size>
+			<x>518</x>
+			<y>73</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relationship>
+					<name>FK_FOLLOWS_ON_FOLLOWER</name>
+					<source>table.USERS</source>
+					<target>table.FOLLOWS</target>
+					<fk_columns>
+						<fk_column>
+							<fk_column_name>FOLLOWER</fk_column_name>
+						</fk_column>
+					</fk_columns>
+					<parent_cardinality>1</parent_cardinality>
+					<child_cardinality>0..n</child_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+				</relationship>
+				<relationship>
+					<name>FK_FOLLOWS_ON_FOLLOWEE</name>
+					<source>table.USERS</source>
+					<target>table.FOLLOWS</target>
+					<fk_columns>
+						<fk_column>
+							<fk_column_name>FOLLOWEE</fk_column_name>
+						</fk_column>
+					</fk_columns>
+					<parent_cardinality>1</parent_cardinality>
+					<child_cardinality>1..n</child_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+				</relationship>
+			</connections>
+			<columns>
+				<normal_column>
+					<physical_name>ID</physical_name>
+					<logical_name>FOLLOWS ID</logical_name>
+					<type>bigint</type>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<auto_increment>true</auto_increment>
+				</normal_column>
+				<normal_column>
+					<physical_name>FOLLOWER</physical_name>
+					<logical_name>FOLLWER ID</logical_name>
+					<referred_column>table.USERS.ID</referred_column>
+					<relationship>FK_FOLLOWS_ON_FOLLOWER</relationship>
+					<not_null>true</not_null>
+				</normal_column>
+				<normal_column>
+					<physical_name>FOLLOWEE</physical_name>
+					<logical_name>FOLLOWEE ID</logical_name>
+					<referred_column>table.USERS.ID</referred_column>
+					<relationship>FK_FOLLOWS_ON_FOLLOWEE</relationship>
+					<not_null>true</not_null>
+				</normal_column>
+				<column_group>AUDIT</column_group>
+			</columns>
+			<indexes>
+				<index>
+					<name>UQ_FOLLOWS_FOLLOWER_FOLLOWEE</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.FOLLOWS.FOLLOWER</column_id>
+						</column>
+						<column>
+							<column_id>table.FOLLOWS.FOLLOWEE</column_id>
+						</column>
+					</columns>
+				</index>
+			</indexes>
+			<compound_unique_key_list>
+			</compound_unique_key_list>
+			<table_properties>
+			</table_properties>
+		</table>
+		<table>
 			<physical_name>TWEETS</physical_name>
 			<logical_name>ツイッタ</logical_name>
 			<description>ツイッタを保存している場所</description>
