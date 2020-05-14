@@ -25,8 +25,9 @@ class Section1 {
         // Act:
         // language=SQL
         val results = """
-select *
-from MEMBER
+            select *
+            from MEMBER
+            where MEMBER_NAME like 'S%'
         """.fetch()
 
         // Assert:
@@ -54,8 +55,10 @@ from MEMBER
         // Act:
         // language=SQL
         val results = """
-select * 
-from MEMBER
+            select * 
+            from MEMBER
+            WHERE MEMBER_ID = 1
+            ORDER BY MEMBER_NAME
         """.fetch()
 
         // Assert:
@@ -82,8 +85,10 @@ from MEMBER
         // Act:
         // language=SQL
         val results = """
-select * 
-from MEMBER
+            select * 
+            from MEMBER
+            WHERE BIRTHDATE IS NULL
+            ORDER BY UPDATE_DATETIME DESC
         """.fetch()
 
         // Assert:
